@@ -13,8 +13,8 @@ articles/*.pdf
 *.jl.mem
 Manifest.toml
 
-# Claude Code
-.claude/
+# Claude Code (keep skills, ignore settings)
+.claude/settings.local.json
 
 # OS
 .DS_Store
