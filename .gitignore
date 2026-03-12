@@ -16,6 +16,10 @@ Manifest.toml
 # Claude Code (keep skills, ignore settings)
 .claude/settings.local.json
 
+# Simulation outputs
+data/
+figures/
+
 # OS
 .DS_Store
 Thumbs.db
