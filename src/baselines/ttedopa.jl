@@ -30,7 +30,7 @@ function run_ttedopa(params::SpinBosonParams;
     cpars = chaincoeffs_finiteT(N, params.β, true;
         α=params.ξ, s=1, ωc=params.ωc,
         mc=4, mp=0, iq=1, idelta=2,
-        procedure=:Lanczos, Mmax=5000, save=false
+        procedure=:Lanczos, Mmax=500, save=false
     )
 
     # Build MPO: H = (ε/2)σ_z + Δ σ_x + bath coupling

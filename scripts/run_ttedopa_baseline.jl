@@ -12,8 +12,8 @@ using JLD2
 ξ = 0.1; ωc = 7.5; β = 5.0; Δ = 1.0; ε = 0.0
 
 # T-TEDOPA parameters
-dt = 0.5; tfinal = 20.0; chain_length = 60; d = 10
-bond_dims = [10, 20, 40]
+dt = 0.5; tfinal = 20.0; chain_length = 30; d = 6
+bond_dims = [10, 20]
 
 println("Running T-TEDOPA baseline...")
 println("  ξ=$ξ, ωc=$ωc, β=$β, Δ=$Δ, ε=$ε")
@@ -26,7 +26,7 @@ N = chain_length
 cpars = chaincoeffs_finiteT(N, β, true;
     α=ξ, s=1, ωc=ωc,
     mc=4, mp=0, iq=1, idelta=2,
-    procedure=:Lanczos, Mmax=5000, save=false
+    procedure=:Lanczos, Mmax=500, save=false
 )
 
 # Build MPO
