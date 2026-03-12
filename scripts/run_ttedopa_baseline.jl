@@ -21,9 +21,11 @@ println("  ξ=$ξ, ωc=$ωc, β=$β, Δ=$Δ, ε=$ε")
 N = chain_length
 
 # Chain coefficients for finite-temperature Ohmic bath
-cpars = chaincoeffs_finiteT(N, β;
-    alpha=ξ, s=1, J=nothing, ωc=ωc,
-    mc=4, mp=0, AB=nothing, iq=1, idelta=2,
+# Third positional arg `ohmic=true` selects Ohmic spectral density
+# Keyword `α` (Greek) is the coupling strength (= ξ in our convention)
+cpars = chaincoeffs_finiteT(N, β, true;
+    α=ξ, s=1, ωc=ωc,
+    mc=4, mp=0, iq=1, idelta=2,
     procedure=:Lanczos, Mmax=5000, save=false
 )
 

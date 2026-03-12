@@ -9,9 +9,9 @@ using JLD2
 function run_ttedopa_standalone(; ξ, ωc, β, Δ, ε, dt=0.5, tfinal=20.0,
                                   chain_length=60, d=10, bond_dims=[10, 20, 40])
     N = chain_length
-    cpars = chaincoeffs_finiteT(N, β;
-        alpha=ξ, s=1, J=nothing, ωc=ωc,
-        mc=4, mp=0, AB=nothing, iq=1, idelta=2,
+    cpars = chaincoeffs_finiteT(N, β, true;
+        α=ξ, s=1, ωc=ωc,
+        mc=4, mp=0, iq=1, idelta=2,
         procedure=:Lanczos, Mmax=5000, save=false
     )
     H = spinbosonmpo(ε, Δ, d, N, cpars)
