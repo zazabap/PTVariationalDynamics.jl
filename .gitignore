@@ -2,7 +2,7 @@
 main.tex
 main.pdf
 references/
-docs/
+docs/discussion/
 
 # Compiled Typst output
 articles/*.pdf
