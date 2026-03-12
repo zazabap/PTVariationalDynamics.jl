@@ -43,13 +43,13 @@ function run_tempo(params::SpinBosonParams;
     )
 
     # Extract observables from density matrices
-    # ρs[:, :, k] is the 2×2 density matrix at time t[k]
+    # ρs[k, i, j] is element (i,j) of the 2×2 density matrix at time t[k]
     nsteps = length(t)
     sigma_z = Vector{Float64}(undef, nsteps)
     sigma_x = Vector{Float64}(undef, nsteps)
     for k in 1:nsteps
-        sigma_z[k] = real(ρs[1, 1, k] - ρs[2, 2, k])
-        sigma_x[k] = real(ρs[1, 2, k] + ρs[2, 1, k])
+        sigma_z[k] = real(ρs[k, 1, 1] - ρs[k, 2, 2])
+        sigma_x[k] = real(ρs[k, 1, 2] + ρs[k, 2, 1])
     end
 
     return SimulationResult(
