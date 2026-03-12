@@ -1,0 +1,19 @@
+{
+  "name": "PTVariationalDynamics.jl",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "julialang.language-julia",
+        "nvarner.typst-lsp"
+      ],
+      "settings": {
+        "julia.executablePath": "/usr/local/bin/julia"
+      }
+    }
+  },
+  "postCreateCommand": "julia --project=. -e 'using Pkg; Pkg.instantiate()'"
+}

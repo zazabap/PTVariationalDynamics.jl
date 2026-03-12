@@ -16,9 +16,6 @@ Manifest.toml
 # Claude Code
 .claude/
 
-# Dev container (from different project, not applicable)
-.devcontainer/
-
 # OS
 .DS_Store
 Thumbs.db
