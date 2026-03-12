@@ -1,0 +1,24 @@
+# Project files not part of the Julia package
+main.tex
+main.pdf
+references/
+docs/
+
+# Compiled Typst output
+articles/*.pdf
+
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+Manifest.toml
+
+# Claude Code
+.claude/
+
+# Dev container (from different project, not applicable)
+.devcontainer/
+
+# OS
+.DS_Store
+Thumbs.db
