@@ -62,10 +62,19 @@ Load a SimulationResult from a JLD2 file.
 """
 function load_result(path::String)
     data = load(path)
+    # Handle params saved as SpinBosonParams or as Dict (from separate T-TEDOPA env)
+    p = data["params"]
+    if p isa SpinBosonParams
+        params = p
+    else
+        params = SpinBosonParams(
+            ξ=p["ξ"], ωc=p["ωc"], β=p["β"], Δ=p["Δ"], ε=p["ε"]
+        )
+    end
     return SimulationResult(
         t=data["t"],
         observables=data["observables"],
-        params=data["params"],
+        params=params,
         method=data["method"],
         initial_state=data["initial_state"],
         metadata=data["metadata"]
