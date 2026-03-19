@@ -33,10 +33,10 @@ function run_ttedopa(params::SpinBosonParams;
         procedure=:Lanczos, Mmax=500, save=false
     )
 
-    # Build MPO: H = (ε/2)σ_z + Δ σ_x + bath coupling
-    # MPSDynamics spinbosonmpo takes (ω0, Δ, d, N, cpars)
-    # where ω0 = gap (σ_z coeff), Δ = tunneling (σ_x coeff)
-    H = spinbosonmpo(params.ε, params.Δ, d, N, cpars)
+    # Build MPO: H_s = (ω0/2)σ_z + Δ σ_x  (MPSDynamics convention)
+    # Our convention: H_s = (ε/2)σ_z + (Δ/2)σ_x
+    # So pass Δ/2 as the second argument
+    H = spinbosonmpo(params.ε, params.Δ / 2, d, N, cpars)
 
     # Initial state: spin-up ⊗ vacuum bath
     psi_up = unitcol(1, 2)

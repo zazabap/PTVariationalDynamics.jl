@@ -18,7 +18,7 @@ function run_ttedopa_standalone(; ξ, ωc, β, Δ, ε, dt=0.5, tfinal=20.0,
         mc=4, mp=0, iq=1, idelta=2,
         procedure=:Lanczos, Mmax=500, save=false
     )
-    H = spinbosonmpo(ε, Δ, d, N, cpars)
+    H = spinbosonmpo(ε, Δ/2, d, N, cpars)
     psi_up = unitcol(1, 2)
     A = productstatemps(physdims(H), state=[psi_up, fill(unitcol(1, d), N)...])
     ob_sz = OneSiteObservable("sz", sz, 1)

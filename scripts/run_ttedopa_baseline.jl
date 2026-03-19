@@ -12,8 +12,8 @@ using JLD2
 ξ = 0.1; ωc = 7.5; β = 5.0; Δ = 1.0; ε = 0.0
 
 # T-TEDOPA parameters
-dt = 0.5; tfinal = 20.0; chain_length = 30; d = 6
-bond_dims = [10, 20]
+dt = 0.5; tfinal = 20.0; chain_length = 40; d = 8
+bond_dims = [20, 40]
 
 println("Running T-TEDOPA baseline...")
 println("  ξ=$ξ, ωc=$ωc, β=$β, Δ=$Δ, ε=$ε")
@@ -30,7 +30,10 @@ cpars = chaincoeffs_finiteT(N, β, true;
 )
 
 # Build MPO
-H = spinbosonmpo(ε, Δ, d, N, cpars)
+# MPSDynamics convention: H_s = (ω0/2)σ_z + Δ σ_x
+# Our convention: H_s = (ε/2)σ_z + (Δ/2)σ_x
+# So pass Δ/2 as the second argument
+H = spinbosonmpo(ε, Δ/2, d, N, cpars)
 
 # Initial state: spin-up ⊗ vacuum bath
 psi_up = unitcol(1, 2)
